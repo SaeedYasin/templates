@@ -1,0 +1,77 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 50px;
+}
+
+.btn {
+  $primary: #007bff;
+  $secondary: #6c757d;
+  $success: #28a745;
+  $info: #17a2b8;
+  $warning: #ffc107;
+  $danger: #dc3545;
+  $extrude-size: 3px;
+
+  position: relative;
+  top: 0px;
+  width: 80px;
+  height: 25px;
+  margin: 7px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  text-shadow: 0 0 1px #fff;
+  user-select: none;
+  transition: All 250ms ease;
+
+  &:active {
+    position: relative;
+    top: $extrude-size;
+    box-shadow: none !important;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    background-color: $secondary;
+    border: 1px solid darken($secondary, 5%);
+    box-shadow: 0px $extrude-size 0px darken($secondary, 5%);
+  }
+
+  &-success {
+    color: white;
+    background-color: $success;
+    border: 1px solid darken($success, 5%);
+    box-shadow: 0px $extrude-size 0px darken($success, 5%);
+  }
+
+  &-danger {
+    color: white;
+    background-color: $danger;
+    border: 1px solid darken($danger, 5%);
+    box-shadow: 0px $extrude-size 0px darken($danger, 5%);
+  }
+
+  &-warning {
+    color: white;
+    background-color: $warning;
+    border: 1px solid darken($warning, 5%);
+    box-shadow: 0px $extrude-size 0px darken($warning, 5%);
+  }
+
+  &-info {
+    color: white;
+    background-color: $info;
+    border: 1px solid darken($info, 5%);
+    box-shadow: 0px $extrude-size 0px darken($info, 5%);
+  }
+}
