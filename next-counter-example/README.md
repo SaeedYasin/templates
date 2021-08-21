@@ -1,3 +1,7 @@
+## Using this template
+Run this command to create a new next app using this template,
+npx create-next-app -e https://github.com/SaeedYasin/templates/tree/main/next-counter-example
+
 ## Getting Started
 
 Run the development server:
