@@ -1,5 +1,8 @@
 import styles from "../styles/counter.module.scss";
 import { useDispatch, useSelector } from "react-redux";
+import Image from "next/image";
+import undoImage from "../images/undo.png";
+import redoImage from "../images/redo.png";
 import {
   getCount,
   getPastCounts,
@@ -37,14 +40,14 @@ export default function Counter() {
           onClick={() => dispatch({ type: "UNDO_COUNT" })}
           disabled={pastCounts.length === 0}
         >
-          <img src="undo.png" width="20px" height="20px"></img>
+          <Image src={undoImage} alt="undo" width="20px" height="20px"></Image>
         </button>
         <button
           className={`${styles.btn} ${styles["btn-info"]}`}
           onClick={() => dispatch({ type: "REDO_COUNT" })}
           disabled={futureCounts.length === 0}
         >
-          <img src="redo.png" width="20px" height="20px"></img>
+          <Image src={redoImage} alt="redo" width="20px" height="20px"></Image>
         </button>
       </div>
     </div>
