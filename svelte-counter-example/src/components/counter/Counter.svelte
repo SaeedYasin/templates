@@ -1,11 +1,11 @@
 <script>
-  import undoable from "../../store/undoable.js";
-  import persistent from "../../store/persistent.js";
-  import log from "../../store/log.js";
+  import { onDestroy } from "svelte";
+  import countSlice from "../../store/count.js";
+  const { count, actions, urdo, cleanup } = countSlice;
+  const { increment, decrement } = actions;
+  const { undo, redo, canUndo, canRedo } = urdo;
 
-  const storeLabel = "count";
-  const countStore = log(persistent(storeLabel, 10), storeLabel);
-  const [count, undo, redo, canUndo, canRedo] = undoable(countStore);
+  onDestroy(cleanup);
 
   const handleKeydown = (e) => {
     if (e.ctrlKey) {
@@ -24,18 +24,8 @@
 
 <div class="title">Count: {$count}</div>
 <div>
-  <button
-    class="btn btn-success"
-    on:click={() => count.update((count) => +count + 1)}
-  >
-    +
-  </button>
-  <button
-    class="btn btn-danger"
-    on:click={() => count.update((count) => +count - 1)}
-  >
-    -
-  </button>
+  <button class="btn btn-success" on:click={increment}>+</button>
+  <button class="btn btn-danger" on:click={decrement}>-</button>
 </div>
 <div>
   <button class="btn btn-warning" on:click={undo} disabled={!$canUndo}>

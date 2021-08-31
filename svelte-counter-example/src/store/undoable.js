@@ -41,8 +41,17 @@ export default function undoable(store) {
     update(() => value);
   };
 
+  const cleanup = () => {
+    const current = get(state);
+    state.set({
+      value: current.value,
+      stack: [current.value],
+      index: 0,
+    });
+  };
+
   const value = derived(state, ({ value }) => value);
-  const newStore = { subscribe: value.subscribe, update, set };
+  const urdoStore = { subscribe: value.subscribe, update, set };
 
   const canUndo = derived(state, ({ index }) => index > 0);
   const canRedo = derived(
@@ -50,5 +59,5 @@ export default function undoable(store) {
     ({ index, stack }) => index < stack.length - 1
   );
 
-  return [newStore, undo, redo, canUndo, canRedo];
+  return [urdoStore, undo, redo, canUndo, canRedo, cleanup];
 }

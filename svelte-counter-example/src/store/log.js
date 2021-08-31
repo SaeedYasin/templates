@@ -1,5 +1,4 @@
 import { get } from "svelte/store";
-import { onDestroy } from "svelte";
 
 const timeStamp = () => {
   const date = new Date();
@@ -32,6 +31,5 @@ export default function log(store, name) {
     console.groupEnd();
     previousValue = value;
   });
-  onDestroy(unsubscribe);
-  return store;
+  return [store, unsubscribe];
 }
