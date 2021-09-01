@@ -37,7 +37,7 @@
 </div>
 
 <style lang="scss">
-  .title {
+  :global(.title) {
     font-size: 50px;
   }
 

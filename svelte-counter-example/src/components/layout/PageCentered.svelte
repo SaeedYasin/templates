@@ -10,5 +10,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    max-width: 700px;
+    margin: auto;
   }
 </style>
