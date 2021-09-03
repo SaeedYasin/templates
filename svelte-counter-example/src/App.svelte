@@ -8,7 +8,7 @@
 <PageCentered>
   <div class="title" title="From Svelte" use:tooltip>Hello World</div>
   <div class="imgContainer">
-    <Image src="images/kitty.jpg" alt="kitty" />
+    <Image src="images/kitty.jpg" alt="kitty" /> <!-- try ratio="value%" attribute for width setting -->
   </div>
   <Counter />
   <!-- using title attribute sets the default tooltip -->
