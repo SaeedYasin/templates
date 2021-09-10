@@ -1,0 +1,9 @@
+<template>
+  <require from="./counter.css"></require>
+
+  <div class="title">Count: ${count}</div>
+  <div>
+    <button class="btn btn-success" click.delegate="onIncrement()">+</button>
+    <button class="btn btn-danger" click.delegate="onDecrement()">-</button>
+  </div>
+</template>

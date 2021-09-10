@@ -1,0 +1,9 @@
+<template>
+  <require from="resources/elements/counter"></require>
+  <require from="app.css"></require>
+
+  <div class="page-center">
+    <img src.bind="'hello-world.png' | imageContext" />
+    <counter count.bind="initialCount"></counter>
+  </div>
+</template>

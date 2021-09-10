@@ -1,0 +1,46 @@
+.title {
+  font-size: 50px;
+}
+
+.btn {
+  position: relative;
+  top: 0px;
+  width: 80px;
+  height: 25px;
+  margin: 7px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  text-shadow: 0 0 1px #fff;
+  user-select: none;
+  transition: All 250ms ease;
+}
+
+.btn:active {
+  position: relative;
+  top: 3px;
+  box-shadow: none !important;
+}
+
+.btn:disabled {
+  pointer-events: none;
+  background-color: #6c757d;
+  border: 1px solid #60676e;
+  box-shadow: 0px 3px 0px #60676e;
+}
+
+.btn-success {
+  color: white;
+  background-color: #28a745;
+  border: 1px solid #23923d;
+  box-shadow: 0px 3px 0px #23923d;
+}
+
+.btn-danger {
+  color: white;
+  background-color: #dc3545;
+  border: 1px solid #c7303f;
+  box-shadow: 0px 3px 0px #c7303f;
+}
