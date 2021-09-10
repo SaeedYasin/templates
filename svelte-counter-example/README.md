@@ -1,6 +1,6 @@
 ## Using this template
 
-Run this command to create a new my-extension named folder using this template,
+Run this command to create a new my-project named folder using this template,
 
 ```bash
 npx degit SaeedYasin/templates/svelte-counter-example my-project
