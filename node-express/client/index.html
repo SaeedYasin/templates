@@ -1,0 +1,29 @@
+<html>
+  <body>
+    <div id="event-client1-content" style="font-size: 2rem"></div>
+    <div id="event-all-content" style="font-size: 2rem"></div>
+    <button onclick="closeConnection()">Close Connection</button>
+
+    <script type="text/javascript">
+      const evtSource = new EventSource("/api/events/all");
+      evtSource.addEventListener("message", (message) => {
+        if (message.data !== "keep alive") {
+          console.log("Got", message);
+          document.querySelector("#event-all-content").innerHTML = message.data;
+        }
+      });
+
+      const closeConnection = () => {
+        evtSource.close();
+      };
+
+      const client1EvtSource = new EventSource("/api/events/client1");
+      client1EvtSource.addEventListener("message", (message) => {
+        if (message.data !== "keep alive") {
+          console.log("Got", message);
+          document.querySelector("#event-client1-content").innerHTML = message.data;
+        }
+      });
+    </script>
+  </body>
+</html>
