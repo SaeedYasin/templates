@@ -6,9 +6,8 @@ const router = express.Router();
 
 const em = require("../services/eventsManager");
 const log = require("../common/logger");
-const _ = require("lodash");
 
-router.get("/all", async (req, res) => {
+router.get("/all", (req, res) => {
   // These headers are required to make events work
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
@@ -18,7 +17,8 @@ router.get("/all", async (req, res) => {
   res.write("retry: 10000\n\n");
 
   const ip = req.ip || req.socket.remoteAddress;
-  const id = addClient({ ip, res });
+  const id = em.addClient({ ip, res });
+  res.write(`event: clientid\ndata: ${id}\n\n`);
 
   // Send a keep alive message every minute to keep
   // communication channel open, otherwise browser
@@ -28,12 +28,12 @@ router.get("/all", async (req, res) => {
   }, 60 * 1000);
 
   res.on("close", () => {
-    removeClient(id);
+    em.removeClient(id);
     clearInterval(timer);
   });
 });
 
-router.get("/:from", async (req, res) => {
+router.get("/:from", (req, res) => {
   const { from } = req.params;
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
@@ -58,42 +58,4 @@ router.get("/:from", async (req, res) => {
   });
 });
 
-const clients = [];
-
-const _getFirstAvailableId = () => {
-  return clients
-    .map((client) => client.id)
-    .sort((a, b) => a - b)
-    .reduce((acc, id, idx, arr) => {
-      if (idx !== id) {
-        arr.splice(1); // break early
-        acc = idx;
-      } else if (idx + 1 === arr.length) {
-        acc = arr.length;
-      }
-      return acc;
-    }, 0);
-};
-
-const addClient = ({ ip, res }) => {
-  const id = _getFirstAvailableId();
-  clients.push({ id, ip, res });
-  log.DEBUG("Events /all => Connection opened for client", id, "from ip", ip);
-  log.INFO("Events /all => Total clients are", clients.length);
-  return id;
-};
-
-const removeClient = (id) => {
-  _.remove(clients, { id });
-  log.DEBUG("Events /all => Connection closed for client", id);
-  log.INFO("Events /all => Total clients are", clients.length);
-};
-
-const sendMessageToAll = (message) => {
-  clients.forEach((client) => {
-    client.res.write(`data: ${message}\n\n`);
-  });
-};
-
-em.setMessageAllCb(sendMessageToAll);
 module.exports = router;

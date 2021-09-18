@@ -6,6 +6,11 @@
 
     <script type="text/javascript">
       const evtSource = new EventSource("/api/events/all");
+
+      evtSource.addEventListener("clientid", (message) => {
+        console.log(`Our client id is ${message.data}`);
+      });
+
       evtSource.addEventListener("message", (message) => {
         if (message.data !== "keep alive") {
           console.log("Got", message);
