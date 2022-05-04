@@ -1,3 +1,16 @@
+## Using this template
+
+Run this command to create a new my-project named folder using this template,
+
+```bash
+npx degit SaeedYasin/templates/sveltekit-counter-example my-project
+```
+
+OR
+
+Download this code directly using this link,
+https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/SaeedYasin/templates/tree/main/sveltekit-counter-example
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
