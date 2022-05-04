@@ -50,6 +50,10 @@
 
   :global(.title) {
     font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn {
