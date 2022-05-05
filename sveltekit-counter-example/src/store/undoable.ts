@@ -1,7 +1,7 @@
 import { type Writable, type Readable, type Updater, writable, derived, get } from 'svelte/store';
 
-type UndoableStore = [
-  Writable<number>,
+type UndoableStore<T> = [
+  Writable<T>,
   () => void,
   () => void,
   Readable<boolean>,
@@ -9,7 +9,7 @@ type UndoableStore = [
   () => void
 ];
 
-export default function undoable(store: Writable<number>): UndoableStore {
+export default function undoable<T>(store: Writable<T>): UndoableStore<T> {
   const initial = get(store);
 
   const state = writable({
@@ -32,7 +32,7 @@ export default function undoable(store: Writable<number>): UndoableStore {
     });
   };
 
-  const update = (fn: Updater<number>) => {
+  const update = (fn: Updater<T>) => {
     store.update((old_value) => {
       const value = fn(old_value);
 
@@ -46,7 +46,7 @@ export default function undoable(store: Writable<number>): UndoableStore {
     });
   };
 
-  const set = (value: number) => {
+  const set = (value: T) => {
     update(() => value);
   };
 
@@ -60,7 +60,7 @@ export default function undoable(store: Writable<number>): UndoableStore {
   };
 
   const value = derived(state, ({ value }) => value);
-  const urdoStore: Writable<number> = { subscribe: value.subscribe, update, set };
+  const urdoStore: Writable<T> = { subscribe: value.subscribe, update, set };
 
   const canUndo = derived(state, ({ index }) => index > 0);
   const canRedo = derived(state, ({ index, stack }) => index < stack.length - 1);

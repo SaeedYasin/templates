@@ -22,10 +22,10 @@ const timeStamp = () => {
   ];
 };
 
-export default function log(
-  store: Writable<number>,
+export default function log<T>(
+  store: Writable<T>,
   name: string
-): [Writable<number>, Unsubscriber] {
+): [Writable<T>, Unsubscriber] {
   let previousValue = get(store);
   const unsubscribe = store.subscribe((value) => {
     const entryName = (name || 'value') + ':';

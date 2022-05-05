@@ -1,7 +1,7 @@
 import { type Writable, writable } from 'svelte/store';
 import { browser } from '$app/env';
 
-const read = (key: string): number | undefined => {
+const read = <T>(key: string): T | undefined => {
   try {
     return JSON.parse(localStorage[key]);
   } catch (e) {
@@ -9,8 +9,8 @@ const read = (key: string): number | undefined => {
   }
 };
 
-export default function persistent(key: string, initial: number): Writable<number> {
-  const store: Writable<number> = writable(read(key) || initial, () => {
+export default function persistent<T>(key: string, initial: T): Writable<T> {
+  const store: Writable<T> = writable(read(key) || initial, () => {
     return store.subscribe((value) => {
       if (browser) localStorage[key] = JSON.stringify(value);
     });
