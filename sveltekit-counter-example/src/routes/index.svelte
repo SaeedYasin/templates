@@ -16,6 +16,7 @@
 </svelte:head>
 
 <div class="title" title="From Svelte" use:tooltip>Hello World</div>
+<h3>What's Up</h3>
 <div class="img">
   <Image meta={KittyImg} placeholder={KittyPlaceHolderImg} alt="kitty" loading="lazy" />
 </div>
@@ -23,10 +24,13 @@
 <Counter />
 
 <style lang="scss">
+  @use './src/scss/base' as *;
+
+  h3 {
+    @include flex_center;
+  }
+
   .img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include flex_center;
   }
 </style>

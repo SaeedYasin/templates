@@ -16,6 +16,7 @@
     border-radius: 4px;
     padding: 4px;
     font-size: 1rem;
+    line-height: 1;
     position: absolute;
   }
 </style>

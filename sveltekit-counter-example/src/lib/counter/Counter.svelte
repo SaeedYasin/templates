@@ -27,33 +27,35 @@
 <section>
   <div class="title">Count: {$count}</div>
   <div>
-    <button class="btn btn-success" on:click={increment}>+</button>
-    <button class="btn btn-danger" on:click={decrement}>-</button>
+    <button class="btn btn-success" title="increment" on:click={increment}>+</button>
+    <button class="btn btn-danger" title="decrement" on:click={decrement}>-</button>
   </div>
   <div>
-    <button class="btn btn-warning" on:click={undo} disabled={!$canUndo}>
+    <button class="btn btn-warning" title="undo" on:click={undo} disabled={!$canUndo}>
       <img src={undoImg} alt="undo" width="20px" height="20px" />
     </button>
-    <button class="btn btn-info" on:click={redo} disabled={!$canRedo}>
+    <button class="btn btn-info" title="redo" on:click={redo} disabled={!$canRedo}>
       <img src={redoImg} alt="redo" width="20px" height="20px" />
     </button>
   </div>
 </section>
 
 <style lang="scss">
+  @use './src/scss/base' as *;
+
   section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include flex_center;
   }
 
   :global(.title) {
-    font-size: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    font-size: $font-size-large;
+    @include flex_center;
+  }
+
+  @include mobile {
+    :global(.title) {
+      font-size: 40px;
+    }
   }
 
   .btn {
