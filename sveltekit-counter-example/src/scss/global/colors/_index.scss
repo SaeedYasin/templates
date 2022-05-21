@@ -1,0 +1,39 @@
+@use 'colorMaps' as *;
+
+@mixin color_palette {
+  @include greyColorPallet;
+  @include purpleColorPallet;
+  @include redColorPallet;
+  @include yellowColorPallet;
+  @include greenColorPallet;
+}
+
+@mixin color_intentions {
+  --bg-light: var(--grey50);
+  --bg-dark: var(--grey900);
+  --bg-color: var(--bg-light);
+
+  --text-light: var(--grey700);
+  --text-dark: var(--grey50);
+  --text-color: var(--text-light);
+
+  // --primary: var(--green);
+  // --danger: var(--red);
+  // --background: var(--lightGrey);
+  // --textColor: var(--black);
+  // --buttonTextColor: var(--black);
+  // --lineColor: var(--grey);
+  // --cardBg: var(--white);
+  // --headerBackground: var(--darkBlue);
+  // --footerBackground: var(--black);
+}
+
+@mixin body_colors {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+@mixin body_dark_mode_colors {
+  --bg-color: var(--bg-dark);
+  --text-color: var(--text-dark);
+}

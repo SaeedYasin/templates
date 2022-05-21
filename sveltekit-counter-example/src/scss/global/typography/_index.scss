@@ -1,0 +1,48 @@
+@use 'mixins' as *;
+@use 'fontface' as *;
+@forward 'mixins';
+
+@mixin fonts_root {
+  @include font_base;
+}
+
+p {
+  max-width: 60ch;
+  font-weight: 300;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font_base;
+  font-weight: 400;
+  margin: 0;
+}
+
+h1 {
+  @include display_2xl;
+}
+
+h2 {
+  @include display_xl;
+}
+
+h3 {
+  @include display_lg;
+}
+
+h4 {
+  @include display_md;
+}
+
+h5 {
+  @include display_sm;
+}
+
+h6 {
+  @include display_xs;
+}

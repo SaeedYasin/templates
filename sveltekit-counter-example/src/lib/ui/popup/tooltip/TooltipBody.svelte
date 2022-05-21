@@ -10,9 +10,9 @@
 
 <style>
   div {
-    border: 1px solid #ddd;
-    box-shadow: 1px 1px 1px #ddd;
-    background: white;
+    border: 1px solid var(--text-color);
+    box-shadow: 1px 1px 1px var(--text-color);
+    background: var(--bg-color);
     border-radius: 4px;
     padding: 4px;
     font-size: 1rem;

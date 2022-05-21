@@ -25,7 +25,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <section>
-  <div class="title">Count: {$count}</div>
+  <h4 class="title">Count: {$count}</h4>
   <div>
     <button class="btn btn-success" title="increment" on:click={increment}>+</button>
     <button class="btn btn-danger" title="decrement" on:click={decrement}>-</button>
@@ -48,14 +48,8 @@
   }
 
   :global(.title) {
-    font-size: $font-size-large;
-    @include flex_center;
-  }
-
-  @include mobile {
-    :global(.title) {
-      font-size: 40px;
-    }
+    align-self: center;
+    text-align: center;
   }
 
   .btn {

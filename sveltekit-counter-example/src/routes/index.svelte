@@ -15,22 +15,27 @@
   <meta name="description" content="Sveltekit Counter Example" />
 </svelte:head>
 
-<div class="title" title="From Svelte" use:tooltip>Hello World</div>
-<h3>What's Up</h3>
-<div class="img">
+<section>
+  <h1 class="title" title="From Svelte" use:tooltip>Hello World</h1>
+  <h3>What's Up</h3>
+  <p>
+    Like to know the secrets of transforming a 2-14 team into a 3x Super Bowl winning Dynasty? Lorem
+    ipsum dolor sit amet, consectetur adipiscing elit.
+  </p>
   <Image meta={KittyImg} placeholder={KittyPlaceHolderImg} alt="kitty" loading="lazy" />
-</div>
+</section>
 
 <Counter />
 
 <style lang="scss">
   @use './src/scss/base' as *;
 
-  h3 {
+  section {
     @include flex_center;
   }
 
-  .img {
-    @include flex_center;
+  h3 {
+    align-self: center;
+    text-align: center;
   }
 </style>

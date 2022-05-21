@@ -4,5 +4,17 @@
 :root {
   @include color_palette;
   @include color_intentions;
-  @include fonts;
+  @include fonts_root;
+}
+
+body {
+  @include font_base;
+  @include text_lg;
+  @include body_colors;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @include body_dark_mode_colors;
+  }
 }
