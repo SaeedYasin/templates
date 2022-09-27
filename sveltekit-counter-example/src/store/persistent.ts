@@ -1,5 +1,5 @@
 import { type Writable, writable } from 'svelte/store';
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 
 const read = <T>(key: string): T | undefined => {
   try {
